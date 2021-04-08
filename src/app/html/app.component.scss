@@ -1,0 +1,26 @@
+.main {
+    margin: 20px;
+
+    &__button {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        grid-column-gap: 25px;
+        grid-row-gap: 15px;
+        border: solid 1px gray;
+        padding: 30px 30px 10px 30px;
+    }
+}
+
+.example-radio-button {
+    display: flex;
+    flex-direction: column;
+}
+
+.country {
+    float: left;
+}
