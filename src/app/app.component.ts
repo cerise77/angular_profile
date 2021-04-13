@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpService } from './http.service';
 import {Table} from './table';
@@ -16,6 +16,10 @@ export class AppComponent implements OnInit {
     favoriteHuman: string;
     humans: string[] = ['Male', 'Female', 'Other'];
     disableSelect = new FormControl(true);
+    condition: boolean=true;
+    newCourse : any = '';
+    selectedValue:string; 
+    selectedValueS:string; 
 
     constructor(private httpService:HttpService){
         this.myForm = new FormGroup({
@@ -28,8 +32,16 @@ export class AppComponent implements OnInit {
     }
 
     submit(){
-        this.myForm.controls['name'].enable()
+        this.myForm.controls['name'].enable();
         this.disableSelect = new FormControl(false);
+        this.condition=!this.condition;
+    }
+
+    cancel(){
+        this.newCourse = '';
+        this.selectedValue = undefined;
+        this.selectedValueS = undefined;
+        this.favoriteHuman = null;
     }
 
 }

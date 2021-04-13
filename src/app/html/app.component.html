@@ -1,14 +1,18 @@
 <div class="main">
         <div class="form-group main__button">
-            <button class="btn btn-default" (click)="submit()">Edit</button>
+            <div *while="!condition">
+                <button class="btn btn-default">Save</button>
+                <button class="btn btn-default" (click)="cancel()">Cancel</button>
+            </div>
+            <button class="btn btn-default" *while="condition" (click)="submit()">Edit</button>
         </div>
         <div class="main__grid">
             <form [formGroup]="myForm">
-            <div class="form-group">
-                <label>Name</label>
-                <input class="form-control" name="name" formControlName="name" [attr.disabled]="true"/>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" name="name" formControlName="name" [attr.disabled]="true" [(ngModel)]="newCourse"/>
+                </div>
+            </form>
             <div>
                 <!--<mat-form-field appearance="fill">
                     <mat-label>Date of birthday</mat-label>
@@ -23,8 +27,7 @@
             <div>
                 <div>Country of birthday</div>
                 <mat-form-field appearance="fill">
-                    <mat-label>Choose an option</mat-label>
-                    <mat-select [disabled]="disableSelect.value">
+                    <mat-select [disabled]="disableSelect.value"  placeholder="Choose an option" [(ngModel)]="selectedValue">
                       <mat-option *ngFor="let table of tables" [value]="table.id">
                         {{table.country}}
                       </mat-option>
@@ -34,8 +37,7 @@
             <div>
                 <div>Languages</div>
                 <mat-form-field appearance="fill">
-                    <mat-label>Choose an option</mat-label>
-                    <mat-select [disabled]="disableSelect.value">
+                   <mat-select [disabled]="disableSelect.value" placeholder="Choose an option" [(ngModel)]="selectedValueS">
                       <mat-option *ngFor="let table of tables" [value]="table.id">
                         {{table.language}}
                       </mat-option>
